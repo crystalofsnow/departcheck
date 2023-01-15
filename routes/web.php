@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/orders/{order}', [OrderController::class, 'choose']
+);
+// '/orders/{対象データのID}'にGetリクエストが来たら、OrderControllerのchooseメソッドを実行する
