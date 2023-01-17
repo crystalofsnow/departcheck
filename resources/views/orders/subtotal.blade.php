@@ -11,17 +11,20 @@
     </head>
     <body class>
         <h1>Subtotal</h1>
-        <table >
-            
+        <table>
             <tr>
                 <th>商品</th> <th>単価</th> <th>在庫</th> <th>個数</th>
             </tr>
-            
+            @foreach ($datas as $data)
             <tr>
-                <td>name</td> <td>price</td> <td>stock</td> <td>0</td>
+                <td>{{ $data['product']->name }}</td>
+                <td>{{ $data['product']->price }}</td>
+                <td>{{ $data['product']->stock }}</td>
+                <td>{{ $data['amount']}}</td>
             </tr>
-        </table>
-        <h2>小計</h2>
+            @endforeach
+        </table>    
+        <p>小計</p>
         <div class="footer">
             <input type="button" onclick="location.href='/orders/subtotal'" value="Subtotal">
             <a href="/">back</a>

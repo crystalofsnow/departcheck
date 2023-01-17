@@ -23,6 +23,7 @@ class OrderController extends Controller
     
     public function subtotal()
     {
+        //dd($request);
         return view('orders/subtotal');
     }
     public function send(Request $request)
@@ -50,6 +51,29 @@ class OrderController extends Controller
         
         //dd($merc_info);
         return view('orders/choose_value')->with(['mercs' => $merc_info]);
+    }
+    public function count(Request $request)
+    {
+        //dd($request);
+        $new_list=[];
+        $counts = $request->input('merc_value.*');
+        foreach ($counts as $key){
+            //$product_id = $key['product_id'];
+            //dd($product_id);
+            $product_info = Product::find($key['product_id']);
+            //dd($product_info);
+            $amount = $key['amount'];
+            $list=[];
+            $list=array('product'=>$product_info, 'amount'=>$amount);
+            array_push($new_list, $list);
+        }
+        //dd($new_list);
+        //$counts = $request->input('merc_value.*.product_id');
+        //dd($counts);
+        //$counts_merc = Product::whereIn('id', $counts)->get();
+        //dd($counts_merc);
+        //$data = $counts('')
+        return view('orders/subtotal')->with(['datas' => $new_list]);
     }
 }
 
