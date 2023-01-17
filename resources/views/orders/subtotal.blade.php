@@ -13,20 +13,21 @@
         <h1>Subtotal</h1>
         <table>
             <tr>
-                <th>商品</th> <th>単価</th> <th>在庫</th> <th>個数</th>
+                <th>商品</th> <th>単価</th> <th>個数</th>
             </tr>
-            @foreach ($datas as $data)
+            @foreach ($datas['info'] as $data)
             <tr>
-                <td>{{ $data['product']->name }}</td>
+                <td>{{ $data['product'] ->name }}</td>
                 <td>{{ $data['product']->price }}</td>
-                <td>{{ $data['product']->stock }}</td>
                 <td>{{ $data['amount']}}</td>
             </tr>
             @endforeach
         </table>    
-        <p>小計</p>
+        <p>小計 {{ $datas['total_price'] }}</p>
+        <p>小計(tax) {{ $datas['total_price_tax'] }}</p>
+        <p>総量 {{ $datas['total_amount'] }}</p>
         <div class="footer">
-            <input type="button" onclick="location.href='/orders/subtotal'" value="Subtotal">
+            <input type="button" onclick="location.href='/orders/comfirm'" value="comfirm">
             <a href="/">back</a>
         </div>
     </body>
