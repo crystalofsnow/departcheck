@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Order;
+
+
+class OrderController extends Controller
+{
+    public function index(Order $order)
+    {
+        return view('orders/index')->with(['orders' => $order]);
+    }
+    
+    public function show(Order $order)
+    {
+        dd($order);
+    }
+    public function choose()
+    {
+        return view('orders/choose')->with(['products' => $product->get()]);
+    }
+}

@@ -11,6 +11,15 @@
     </head>
     <body class>
         <h1>Comfirm Date</h1>
-        <h2>Today</h2>
+        
+        <form action="/orders" method="POST">
+            @csrf
+            <div class="date">
+                <h2>date</h2>
+                <input type="text" name="orders[date]" placeholder="1/1(半角入力)"/>
+            </div>
+            <input type="submit" value="store"/>
+        </form>
+        <!-- <input type="button" onclick="location.href='/orders/choose'" value="NEXT"> -->
     </body>
 </html>
