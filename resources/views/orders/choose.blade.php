@@ -15,7 +15,7 @@
             @csrf
             <table>
                 <tr>
-                    <th>商品</th> <th>単価</th> <th>在庫</th> <th>個数</th>
+                    <th> checkbox </th><th>商品</th> <th>単価</th> <th>在庫</th> 
                 </tr>
                 @foreach($products as $product)
                 <tr>
@@ -23,8 +23,7 @@
                     <input type="checkbox" name="merc[][product_id]" value="{{ $product->id }}"><!-- listにしたければnameに[]-->
                     <!-- <input type="checkbox" name="merc[{{ $product->id }}]" value="{{ $product->id }}"><!-- listにしたければnameに[]-->
                    </td> 
-                   <td>{{ $product->name }}</td> <td>{{ $product->price }}</td> <td>{{ $product->stock }} </td> <td>0</td>
-                </tr>
+                   <td>{{ $product->name }}</td> <td>{{ $product->price }}</td> <td>{{ $product->stock }} </td> 
                 @endforeach
             </table>
             <input type="submit" value="choose">

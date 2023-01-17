@@ -11,21 +11,29 @@
     </head>
     <body class>
         <h1>Choose Value</h1>
-        <table >
-            <tr>
-                <th>商品</th> <th>単価</th> <th>在庫</th> <th>個数</th>
-            </tr>
-            
-            @foreach ($mercs as $merc)
-            <tr>
-                <!-- <h2>value:{{$merc}}</h2> -->
-                <td>{{ $merc->name }}</td> <td>{{ $merc->price }}</td> <td>{{ $merc->stock }} </td> <td>0</td>
-            </tr>
-            @endforeach
-            
-        </table>
+        <form action="/orders/count" method="POST">
+            @csrf
+            <table>
+                <tr>
+                    <th>商品</th> <th>単価</th> <th>在庫</th> <th>個数</th>
+                </tr>
+                
+                @foreach ($mercs as $merc)
+                <input type="hidden" name="merc_value[{{ $merc->name }}][product_id]" value={{ $merc->id }}>
+                <tr>
+                    <!-- <h2>value:{{$merc}}</h2> -->
+                    <td>{{ $merc->name }}</td> <td>{{ $merc->price }}</td> <td>{{ $merc->stock }} </td>
+                    <td>
+                        <input type="number" name="merc_value[{{ $merc->name }}][amount]" placeholder="1">
+                    </td>
+                </tr>
+                @endforeach
+                
+            </table>
+            <input type="submit" value="subtotal">
+        </form>
         <div class="footer">
-            <input type="button" onclick="location.href='/orders/subtotal'" value="subtotal">
+            <!--<input type="button" onclick="location.href='/orders/subtotal'" value="subtotal">-->
             <a href="/">back</a>
             
             
