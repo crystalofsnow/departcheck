@@ -6,6 +6,7 @@ use Illuminate\Http\Request;//requestのallメソッドを使うためには必�
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Choose;
+use App\Common\CalcClass;
 
 class OrderController extends Controller
 {
@@ -55,6 +56,11 @@ class OrderController extends Controller
     public function count(Request $request)
     {
         //dd($request);
+        
+        /*
+        以下 app/CalcClassに移動
+        
+        
         $new_list=[]; //次のViewに渡すリスト
         $total_price = 0; //total price 初期値
         $total_amount = 0;
@@ -98,7 +104,33 @@ class OrderController extends Controller
         //$counts_merc = Product::whereIn('id', $counts)->get();
         //dd($counts_merc);
         //$data = $counts('')
-        return view('orders/subtotal')->with(['datas' => $all_info]);
+        */
+        $all_info_from_calcClass = CalcClass::Calculation($request);
+        //dd($all_info_from_calcClass);
+        return view('orders/subtotal')->with(['datas' => $all_info_from_calcClass]);
+    }
+    public function comfirm(Request $request, Order $order)
+    {
+        //dd($request);
+         $all_info_from_calcClass = CalcClass::Calculation($request);
+         dd($all_info_from_calcClass);
+         //$input = $request[$order];
+         //dd($order);
+         return view('orders/finished')->with(['datas' => $all_info_from_calcClass]);
+    }
+    /*public function test()
+    {
+        CalcClass::sayHello();
+
+        return view(
+            'test'
+        );
+    }
+    */
+    public function finished()
+    {
+        //dd($request);
+        return view('orders/finished');
     }
 }
 
