@@ -17,12 +17,13 @@ use App\Http\Controllers\OrderController;
 
 
 
-Route::get('/', [OrderController::class, 'index']);
-
+//Route::get('/', [OrderController::class, 'test']);//test
+Route::get('/', [OrderController::class, 'index']);//戻す
 /*
 Route::get('/orders/{order}', [OrderController::class , 'choose']);
 //'Orders/{対象データID}'にGetリクエストが来たら，OrderControllerのchooseメソッドを実行する
 */
+Route::post('/orders/comfirm',[OrderController::class, 'comfirm']);
 Route::post('/orders/count',[OrderController::class, 'count']);
 Route::post('orders/merc',[OrderController::class, 'merc']);
 Route::post('/orders', [OrderController::class, 'send']);
@@ -30,3 +31,4 @@ Route::get('/orders/choose', [OrderController::class, 'choose']);
 
 Route::get('/orders/choose_value', [OrderController::class, 'choose_value']);
 Route::get('/orders/subtotal', [OrderController::class, 'subtotal']);
+Route::get('/orders/finished', [OrderController::class, 'finished']);
