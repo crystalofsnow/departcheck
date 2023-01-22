@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Choose;
 use App\Models\Order_detail;
+use App\Models\Guest;
 use App\Common\CalcClass;
 
 class OrderController extends Controller
@@ -122,6 +123,7 @@ class OrderController extends Controller
         //dd($request);
          $all_info_from_calcClass = CalcClass::Calculation($request);
          $guest_id =$request['user_id'];
+         
          $all_info_from_calcClass = array_merge($all_info_from_calcClass, array('guest_id'=>$guest_id));
          //dd($all_info_from_calcClass);
          //dd($user_id);
@@ -196,5 +198,18 @@ class OrderController extends Controller
          return redirect('orders/choose')->with(['products' => $product->get()]);
          
     }
+    public function members(Guest $guest)
+    {
+        return view('orders/members')->with(['members' => $guest ->get()]);
+    }
+    public function member_submit(Request $request, Guest $guest)
+    {
+        //input = $request;
+        $guest->fill($request->all())->save();
+        return redirect('orders/regist_comple');
+    }
+    public function regist_comple()
+    {
+        return view('orders/regist_comple')->with(['guests' =>$guest ->get()]);//guest id の表示
+    }
 }
-
