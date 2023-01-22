@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guest_id')->constrained('guests');
+            $table->bigInteger('guest_id')->unsigned()->nullable($value = true);
             $table->integer('total_amount');
             $table->integer('total_price');
+            $table->integer('total_price_tax');
             $table->timestamps();
         });
     }
