@@ -13,5 +13,10 @@ class Guest extends Model
     {
         return $this->hasMany(Order::class);
     }
+    protected $fillable =[
+        'name',
+        'email',
+        'password'
+        ];
     
 }
