@@ -11,4 +11,8 @@ class Product extends Model
     protected $fillable =[
         'stock'
         ];
+    public function orders()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

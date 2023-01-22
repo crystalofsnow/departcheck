@@ -34,7 +34,7 @@
         </form>
         <div class="footer">
             <!--<input type="button" onclick="location.href='/orders/subtotal'" value="subtotal">-->
-            <a href="/">back</a>
+            <a href="/orders/choose">back</a>
             
             
             
