@@ -4,22 +4,18 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Subtotal</title>
+        <title>finish</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body class>
-        <h1>Subtotal</h1>
-        <form action="/orders/comfirm" method="POST">
-            @csrf
-            <table>
+        <h1>finish</h1>
+                <table>
                 <tr>
-                    <th>商品</th> <th>単価</th> <th>個数</th>
+                    <th>商品</th> <th>単価</th> <th>個数</th> 
                 </tr>
                 @foreach ($datas['info'] as $data)
-                <input type="hidden" name="merc_value[{{ $data['product']->name }}][product_id]" value={{ $data['product']->id }}>
-                <input type="hidden" name="merc_value[{{ $data['product']->name }}][amount]" value={{ $data['amount'] }}>
                 <tr>
                     <td>{{ $data['product'] ->name }}</td>
                     <td>{{ $data['product']->price }}</td>
@@ -30,11 +26,9 @@
             <p>小計 {{ $datas['total_price'] }}</p>
             <p>小計(tax) {{ $datas['total_price_tax'] }}</p>
             <p>総量 {{ $datas['total_amount'] }}</p>
-            <input type="submit" value="comfirm">
-        </form>
         <div class="footer">
             
-            <a href="/">back</a>
+            <a href="/orders/choose">back</a>
         </div>
     </body>
 </html>

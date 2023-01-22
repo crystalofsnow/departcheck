@@ -13,5 +13,14 @@ class Order extends Model
         'total_price',
         'total_price_tax'
         ];
+    public function guest()
+    {
+        return $this->belongsTo(Guest::class);
+    }
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
+    
 }
 //fillableでデータ格納

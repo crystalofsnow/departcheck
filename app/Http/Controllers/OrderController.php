@@ -10,9 +10,13 @@ use App\Common\CalcClass;
 
 class OrderController extends Controller
 {
-    public function index(Order $order)
+    public function first(Product $product)
     {
-        return view('orders/index')->with(['orders' => $order->get()]);
+        //$products = Product::all();
+        //dd($products);
+        //dd($merc_info);
+        //return view('orders/choose_value')->with(['mercs' => $merc_info]);
+        return view('orders/index')->with(['products' => $product->get()]);
     }
     
     public function choose(Product $product)
@@ -27,6 +31,7 @@ class OrderController extends Controller
         //dd($request);
         return view('orders/subtotal');
     }
+    /*
     public function send(Request $request)
     {
         //dd($request);
@@ -34,6 +39,7 @@ class OrderController extends Controller
         //dd($input['date']);
         return redirect('orders/choose')->with(['dates' => $input['date']]);
     }
+    */
     public function choose_value()//Merchandise
     {
         //dd($merc);
@@ -156,6 +162,22 @@ class OrderController extends Controller
     {
         //dd($request);
         return view('orders/finished');
+    }
+    public function firststock(Request $request)
+    {
+        //dd($request);
+         $firststock = $request->input('firststock.*');
+         foreach($firststock as $key => $value){
+             //dd($value['product_id']);
+             //foreach($value as $product_id => $amount){
+             //    dd($amount);
+             $product = Product::find($value['product_id']);
+             $product->stock = $value['stock'];//database stockに新たな値を保存
+             $product->save();
+             //dd($product);
+         }
+         return redirect('orders/choose')->with(['products' => $product->get()]);
+         
     }
 }
 

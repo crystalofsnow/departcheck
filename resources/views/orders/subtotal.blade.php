@@ -35,7 +35,7 @@
         </form>
         <div class="footer">
             
-            <a href="/">back</a>
+            <a href="/orders/choose_value">back</a>
         </div>
     </body>
 </html>
