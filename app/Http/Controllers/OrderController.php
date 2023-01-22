@@ -113,9 +113,34 @@ class OrderController extends Controller
     {
         //dd($request);
          $all_info_from_calcClass = CalcClass::Calculation($request);
-         dd($all_info_from_calcClass);
-         //$input = $request[$order];
+         $guest_id =$request['user_id'];
+         $all_info_from_calcClass = array_merge($all_info_from_calcClass, array('guest_id'=>$guest_id));
+         //dd($all_info_from_calcClass);
+         //dd($user_id);
+         //dd($all_info_from_calcClass);
+         //$input_orders = $all_info_from_calcClass['order'];
+         //dd($input_order);
+         
+         $order->fill($all_info_from_calcClass)->save();
          //dd($order);
+         
+         //products databasseの値の更新
+         $mercs = $request->input('merc_value.*');
+         foreach($mercs as $key => $value){
+             //dd($value['product_id']);
+             //foreach($value as $product_id => $amount){
+             //    dd($amount);
+             $product = Product::find($value['product_id']);
+             $product->stock = $product->stock - $value['amount'];//database productsから値減らす
+             $product->save();
+             //dd($product);
+         }
+         //dd($mercs);
+         //ループ
+         //$product = Product::find($mercs['product_id']);
+         //$product->amount = $product->amount - $mercs->amount;
+         
+         //dd($product);
          return view('orders/finished')->with(['datas' => $all_info_from_calcClass]);
     }
     /*public function test()

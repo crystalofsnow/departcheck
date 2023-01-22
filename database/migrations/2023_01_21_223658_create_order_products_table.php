@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('order_products', function (Blueprint $table) {
-            $table->foreignId('order_id')->constrained('orders');
-            $table->foreignId('product_id')->constrained('products');
+            $table->bigInteger('order_id')->unsigned();
+            $table->bigInteger('product_id')->unsigned();;
             $table->primary(['order_id', 'product_id']);
             $table->integer('amount');
+            $table->timestamps();
         });
     }
 
