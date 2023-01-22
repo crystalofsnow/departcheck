@@ -6,6 +6,7 @@ use Illuminate\Http\Request;//requestのallメソッドを使うためには必�
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Choose;
+use App\Models\Order_detail;
 use App\Common\CalcClass;
 
 class OrderController extends Controller
@@ -115,8 +116,9 @@ class OrderController extends Controller
         //dd($all_info_from_calcClass);
         return view('orders/subtotal')->with(['datas' => $all_info_from_calcClass]);
     }
-    public function comfirm(Request $request, Order $order)
+    public function comfirm(Request $request, Order $order, Product $product, Order_detail $order_detail)
     {
+        //orderの保存
         //dd($request);
          $all_info_from_calcClass = CalcClass::Calculation($request);
          $guest_id =$request['user_id'];
@@ -129,6 +131,21 @@ class OrderController extends Controller
          
          $order->fill($all_info_from_calcClass)->save();
          //dd($order);
+         
+         //order details の保存
+         //dd($all_info_from_calcClass['info']);
+         foreach($all_info_from_calcClass['info'] as $key => $value){
+            $data =
+            [
+                'order_id' => $order->id,
+                'product_id' => $value['product']->id,
+                'amount' => $value['amount']
+            ];
+            //$order_detail->fill($data)->save();
+            Order_detail::insert($data);
+         }
+         
+         
          
          //products databasseの値の更新
          $mercs = $request->input('merc_value.*');
