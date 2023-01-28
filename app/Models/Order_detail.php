@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Order_detail extends Model
 {
@@ -22,5 +23,5 @@ class Order_detail extends Model
         'product_id',
         'amount'
     ];
-        
+       
 }

@@ -14,11 +14,11 @@ use App\Http\Controllers\OrderController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -27,27 +27,34 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    Route::get('/', [OrderController::class, 'first'])->name('first');
+    /*
+    Route::get('/orders/{order}', [OrderController::class , 'choose']);
+    //'Orders/{対象データID}'にGetリクエストが来たら，OrderControllerのchooseメソッドを実行する
+    */
+    Route::post('/orders/regist_comple',[OrderController::class, 'regist_comple']);
+    Route::post('/orders/firststock',[OrderController::class, 'firststock']);
+    Route::post('/orders/comfirm',[OrderController::class, 'comfirm']);
+    Route::post('/orders/count',[OrderController::class, 'count']);
+    Route::post('orders/merc',[OrderController::class, 'merc']);
+    Route::post('/orders', [OrderController::class, 'send']);
+    Route::post('orders/more_post', [OrderController::class, 'more_post']);
+    Route::post('/orders/data_details_more', [OrderController::class, 'data_details']);
+    Route::get('/orders/choose', [OrderController::class, 'choose'])->name('checkout');
+    
+    Route::get('/orders/choose_value', [OrderController::class, 'choose_value']);
+    Route::get('/orders/subtotal', [OrderController::class, 'subtotal']);
+    Route::get('/orders/finished', [OrderController::class, 'finished']);
+    
+    
+    Route::get('/orders/members', [OrderController::class, 'members'])->name('members');
+    //Route::get('orders/regist_comple', [OrderController::class, 'regist_comple']);
+    
+    Route::get('/orders/datas', [OrderController::class, 'datas'])->name('datas');
+    Route::get('/orders/data_details_more', [OrderController::class, 'data_details']);
+    });
+  
 
-Route::get('/', [OrderController::class, 'first'])->name('first');
-/*
-Route::get('/orders/{order}', [OrderController::class , 'choose']);
-//'Orders/{対象データID}'にGetリクエストが来たら，OrderControllerのchooseメソッドを実行する
-*/
-Route::post('/orders/member_submit',[OrderController::class, 'member_submit']);
-Route::post('/orders/firststock',[OrderController::class, 'firststock']);
-Route::post('/orders/comfirm',[OrderController::class, 'comfirm']);
-Route::post('/orders/count',[OrderController::class, 'count']);
-Route::post('orders/merc',[OrderController::class, 'merc']);
-Route::post('/orders', [OrderController::class, 'send']);
-Route::get('/orders/choose', [OrderController::class, 'choose'])->name('checkout');
 
-Route::get('/orders/choose_value', [OrderController::class, 'choose_value']);
-Route::get('/orders/subtotal', [OrderController::class, 'subtotal']);
-Route::get('/orders/finished', [OrderController::class, 'finished']);
-
-
-Route::get('/orders/members', [OrderController::class, 'members'])->name('members');
-Route::get('orders/regist_comple', [OrderController::class, 'regist_comple']);
 
 require __DIR__.'/auth.php';

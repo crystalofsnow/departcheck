@@ -12,7 +12,7 @@
     <body class>
         <x-app-layout>
             <x-slot name="header">New member</x-slot>
-            <form action="/orders/member_submit" method="POST">
+            <form action="/orders/regist_comple" method="POST">
                 @csrf
                 <table>
                     

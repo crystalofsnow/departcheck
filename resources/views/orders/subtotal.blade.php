@@ -31,7 +31,7 @@
                 <p>小計 {{ $datas['total_price'] }}</p>
                 <p>小計(tax) {{ $datas['total_price_tax'] }}</p>
                 <p>総量 {{ $datas['total_amount'] }}</p>
-                <input type="number" name="user_id" placeholder="0000"/>
+                <input type="number" name="guest_id" placeholder="0000"/>
                 <input type="submit" value="comfirm">
             </form>
             <div class="footer">

@@ -12,7 +12,7 @@
     <body class>
         <x-app-layout>
             <x-slot name="header">入荷数</x-slot>
-            
+            <p class="text-xl m-20">test</p>
              <form action="/orders/firststock" method="POST">
                 @csrf
                 <table>

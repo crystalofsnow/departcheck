@@ -15,7 +15,7 @@
             
             Completion of registration
             
-            No. {{ $guests->id }}
+            No. {{ $new_guest->id }}
         </x-app-layout>
     </body>
 </html>

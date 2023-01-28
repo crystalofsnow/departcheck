@@ -122,16 +122,19 @@ class OrderController extends Controller
         //orderの保存
         //dd($request);
          $all_info_from_calcClass = CalcClass::Calculation($request);
-         $guest_id =$request['user_id'];
+         $guest_id =$request['guest_id'];//test
          
-         $all_info_from_calcClass = array_merge($all_info_from_calcClass, array('guest_id'=>$guest_id));
+         $all_info_from_calcClass = array_merge(array('guest_id'=>$guest_id), $all_info_from_calcClass);//test
          //dd($all_info_from_calcClass);
          //dd($user_id);
          //dd($all_info_from_calcClass);
          //$input_orders = $all_info_from_calcClass['order'];
          //dd($input_order);
-         
-         $order->fill($all_info_from_calcClass)->save();
+         //dd($guest_id, $all_info_from_calcClass);
+         $order->fill($all_info_from_calcClass);
+         //dd($order);
+         $order->save();
+         //$order->guest_id = $guest_id -> save();
          //dd($order);
          
          //order details の保存
@@ -202,14 +205,52 @@ class OrderController extends Controller
     {
         return view('orders/members')->with(['members' => $guest ->get()]);
     }
-    public function member_submit(Request $request, Guest $guest)
+    public function regist_comple(Request $request, Guest $guest)
     {
         //input = $request;
+        //dd($request);
         $guest->fill($request->all())->save();
-        return redirect('orders/regist_comple');
+        //dd($guest['name']);
+        $new_guest=Guest::where('name', '=', $guest['name'])->first();
+        //dd($new_guest);
+        return view('orders/regist_comple')->with(['new_guest' =>$new_guest]);//guest id の表示;
     }
-    public function regist_comple()
+    
+    public function datas(Order $order)
     {
-        return view('orders/regist_comple')->with(['guests' =>$guest ->get()]);//guest id の表示
+        return view('orders/datas')->with(['datas' => $order ->get()]);
+    }
+    /*
+    public function data_details(Request $request)
+    {
+        dd($request);
+        return view('orders/data_details')->with(['id' => $more-> get()]);
+    }
+    */
+    public function more_post(Request $request , Order $order, Product $product)
+    {
+        $more = $request['id'];
+        //dd($more);
+        //dd($order->find($more)->order_details());
+        
+        
+        //dd($details);
+        //$more_details=Order_detail::where("order_id", $more)->get();
+        
+        $details = Order_detail::select()
+                ->join('products', 'products.id', '=', 'order_details.product_id')
+                ->where('order_id', $more)
+                ->get();
+        dd($details);
+        //dd($more_details);
+        //$test=new Order_detail();
+        //$details = $more_details->order_details->getProduct();
+        //dd($details);
+        //dd($more_details['product_id']);
+        //$chose_merc=Product::where("product_id", $more_details)->get();
+        //dd($more_details::find("product_id"]);
+        return view('orders/data_details')->with(['details'=> $details]);
+        //return view('orders/data_detail_more')->with(['id' => $more-> get()]);
+        
     }
 }
