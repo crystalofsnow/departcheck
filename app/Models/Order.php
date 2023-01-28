@@ -9,6 +9,7 @@ class Order extends Model
 {
     use HasFactory;
     protected $fillable =[
+        'guest_id',
         'total_amount',
         'total_price',
         'total_price_tax'
@@ -19,7 +20,7 @@ class Order extends Model
     }
     public function order_details()
     {
-        return $this->belongsToMany(Order_detail::class);
+        return $this->hasMany(Order_detail::class);
     }
     
 }
