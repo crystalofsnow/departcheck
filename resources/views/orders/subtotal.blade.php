@@ -16,13 +16,14 @@
                 @csrf
                 <table>
                     <tr>
-                        <th>商品</th> <th>単価</th> <th>個数</th>
+                        <th>商品</th> <th> </th><th>単価</th> <th>個数</th>
                     </tr>
                     @foreach ($datas['info'] as $data)
                     <input type="hidden" name="merc_value[{{ $data['product']->name }}][product_id]" value={{ $data['product']->id }}>
                     <input type="hidden" name="merc_value[{{ $data['product']->name }}][amount]" value={{ $data['amount'] }}>
                     <tr>
                         <td>{{ $data['product'] ->name }}</td>
+                        <td><img src="{{ $data['product'] ->image_url }}" alt="No image"/></td>
                         <td>{{ $data['product']->price }}</td>
                         <td>{{ $data['amount']}}</td>
                     </tr>

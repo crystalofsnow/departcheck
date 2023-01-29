@@ -115,6 +115,7 @@ class OrderController extends Controller
         */
         $all_info_from_calcClass = CalcClass::Calculation($request);
         //dd($all_info_from_calcClass);
+        
         return view('orders/subtotal')->with(['datas' => $all_info_from_calcClass]);
     }
     public function comfirm(Request $request, Order $order, Product $product, Order_detail $order_detail)

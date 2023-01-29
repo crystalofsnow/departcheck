@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('stock');
             $table->timestamps();
+            $table->string('image_url');
         });
     }
 
