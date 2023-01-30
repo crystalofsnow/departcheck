@@ -8,28 +8,36 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="/dist/output.css" rel="stylesheet">
     </head>
     <body class>
         <x-app-layout>
-            <x-slot name="header">finish</x-slot>
-                    <table>
-                    <tr>
-                        <th>商品</th> <th>単価</th> <th>個数</th> 
-                    </tr>
+            <x-slot name="header">Details</x-slot>
+                <div class="flex justify-center m-20">
+                     <table class="table-auto text-left bg-white">
+                        <tr class="bg-gray-500 text-white">
+                            <th scope="col" class="p-4">商品</th>
+                            <th scope="col" class="p-4">単価</th> 
+                            <th scope="col" class="p-4">個数</th>
+                        </tr>
                     
-                    @foreach($details as $detail)
+                        @foreach($details as $detail)
                     
-                    <tr>
+                        <tr>
                        
                        
-                       <td>{{ $detail->name }}</td>
-                       <td>{{ $detail->price }}</td>
-                       <td>{{ $detail->amount }}</td> 
-                 @endforeach
-                 
+                        <td class="p-4">{{ $detail->name }}</td>
+                       <td class="p-4">{{ $detail->price }}</td>
+                       <td class="p-4">{{ $detail->amount }}</td> 
+                         @endforeach
+                        </tr>
                     </table>
-                
-                <a href="/orders/datas">back</a>
+                </div>
+                <div class="footer">
+                <div class="flex justify-center m-20">
+                    <a href="/orders/datas" class="my-2 px-4 py-2 border-2 border-blue-500 hover:opacity-75 rounded-full font-bold">back</a>
+                    
+                </div>
             </div>
         </x-app-layout>
     </body>

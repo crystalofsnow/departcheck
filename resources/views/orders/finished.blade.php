@@ -12,24 +12,45 @@
     <body class>
         <x-app-layout>
             <x-slot name="header">finish</x-slot>
-                    <table>
-                    <tr>
-                        <th>商品</th> <th>単価</th> <th>個数</th> 
-                    </tr>
-                    @foreach ($datas['info'] as $data)
-                    <tr>
-                        <td>{{ $data['product'] ->name }}</td>
-                        <td>{{ $data['product']->price }}</td>
-                        <td>{{ $data['amount']}}</td>
-                    </tr>
+                <div class="flex justify-center m-20">
+                    <table class="table-auto text-left bg-white">
+                        <tr class="bg-gray-500 text-white">
+                            <th scope="col" class="p-4">商品</th>
+                            <th scope="col" class="p-4">単価</th> 
+                            <th scope="col" class="p-4">個数</th>
+                        </tr>
+                        @foreach ($datas['info'] as $data)
+                        <tr>
+                            <td class="p-4">{{ $data['product'] ->name }}</td>
+                            <td class="p-4">{{ $data['product']->price }}</td>
+                            <td class="p-4">{{ $data['amount']}}</td>
+                        </tr>
                     @endforeach
-                </table>    
-                <p>小計 {{ $datas['total_price'] }}</p>
-                <p>小計(tax) {{ $datas['total_price_tax'] }}</p>
-                <p>総量 {{ $datas['total_amount'] }}</p>
-            <div class="footer">
+                    </table>
+                </div>
+                <div class="flex justify-center m-40">
+                    <table class="table-fixed text-center bg-white">
+                        <tr>
+                            <th scope="col" class="bg-yellow-50 p-4">小計</th>
+                            <td class="p-4">{{ $datas['total_price'] }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="bg-yellow-50 p-4">小計(TAX)</th>
+                            <td class="p-4">{{ $datas['total_price_tax'] }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="bg-yellow-50 p-4">総量</th>
+                            <td class="p-4">{{ $datas['total_amount'] }}</td>
+                        </tr>
+                        
+                    </table>
+                </div>
                 
-                <a href="/orders/choose">back</a>
+             <div class="footer">
+                <div class="flex justify-center m-20">
+                    <a href="/orders/choose" class="my-2 px-4 py-2 border-2 border-blue-500 hover:opacity-75 rounded-full font-bold">back</a>
+                    
+                </div>
             </div>
         </x-app-layout>
     </body>
