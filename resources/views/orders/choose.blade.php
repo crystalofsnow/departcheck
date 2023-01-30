@@ -15,13 +15,14 @@
             <form action="/orders/merc" method="POST">
                 @csrf
                 <div class="flex justify-center m-20">
-                    <table class="table-auto text-left">
+                    <table class="table-auto text-left divide-y divide-gray-200 dark:divide-gray-700">
                         <tr class="bg-gray-500 text-white">
                             <th scope="col" class="p-4"> checkbox </th>
                             <th scope="col" class="p-4">商品</th>
                             <th scope="col" class="p-4">単価</th> 
                             <th scope="col" class="p-4">在庫</th> 
                         </tr>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-300 bg-white">
                         @foreach($products as $product)
                         <tr class="p-4">
                            <td class="p-4">
@@ -29,9 +30,10 @@
                             <!-- <input type="checkbox" name="merc[{{ $product->id }}]" value="{{ $product->id }}"><!-- listにしたければnameに[]-->
                            </td> 
                            <td class="p-4">{{ $product->name }}</td>
-                           <td class="p-4">{{ $product->price }}</td> 
+                           <td class="p-4">￥{{ $product->price }}</td> 
                            <td class="p-4">{{ $product->stock }} </td> 
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
                 

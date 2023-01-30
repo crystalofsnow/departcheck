@@ -21,7 +21,8 @@
                             <th scope="col" class="p-4">Total Price</th> 
                             <th scope="col" class="p-4">日時</th> 
                             <th scope="col" class="p-4">詳細</th>
-                    
+                        </tr>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-300 bg-white">
                     @foreach($datas as $data)
                     <tr>
                        
@@ -35,7 +36,9 @@
                        <input type="submit" value="more">
                        </form>
                        </td>
+                    </tr>
                     @endforeach
+                    </tbody>
                 </table>
             </div>
         </x-app-layout>

@@ -20,17 +20,18 @@
                             <th scope="col" class="p-4">単価</th> 
                             <th scope="col" class="p-4">個数</th>
                         </tr>
-                    
-                        @foreach($details as $detail)
-                    
-                        <tr>
-                       
-                       
-                        <td class="p-4">{{ $detail->name }}</td>
-                       <td class="p-4">{{ $detail->price }}</td>
-                       <td class="p-4">{{ $detail->amount }}</td> 
-                         @endforeach
-                        </tr>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-300 bg-white">
+                            @foreach($details as $detail)
+                        
+                            <tr>
+                           
+                           
+                            <td class="p-4">{{ $detail->name }}</td>
+                           <td class="p-4">￥{{ $detail->price }}</td>
+                           <td class="p-4">{{ $detail->amount }}</td> 
+                             @endforeach
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div class="footer">

@@ -22,7 +22,7 @@
                             <th scope="col" class="p-4">在庫</th> 
                             <th scope="col" class="p-4">個数</th>
                         </tr>
-                    
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-300 bg-white">
                     @foreach ($mercs as $merc)
                     <input type="hidden" name="merc_value[{{ $merc->name }}][product_id]" value={{ $merc->id }}>
                     <tr class="p-4">
@@ -31,11 +31,11 @@
                         <td class="p-4">{{ $merc->price }}</td> 
                         <td class="p-4">{{ $merc->stock }} </td>
                         <td class="p-4">
-                            <input type="number" name="merc_value[{{ $merc->name }}][amount]" placeholder="1">
+                            <input type="number" name="merc_value[{{ $merc->name }}][amount]" placeholder="1" value="1" min="1">
                         </td>
                     </tr>
                     @endforeach
-                    
+                    </tbody>
                     </table>
                 </div>    
                 
