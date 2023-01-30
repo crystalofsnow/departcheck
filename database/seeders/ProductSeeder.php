@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
             
         DB::table('products')->insert([
             'name' =>'cheezecake',
-            'price' => 600,
+            'price' => 500,
             'stock' => 1,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
@@ -36,7 +36,7 @@ class ProductSeeder extends Seeder
         
         DB::table('products')->insert([
             'name' =>'muffin',
-            'price' => 600,
+            'price' => 450,
             'stock' => 1,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
@@ -45,7 +45,7 @@ class ProductSeeder extends Seeder
             
         DB::table('products')->insert([
             'name' =>'macaron',
-            'price' => 600,
+            'price' => 250,
             'stock' => 1,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
@@ -54,7 +54,7 @@ class ProductSeeder extends Seeder
             
         DB::table('products')->insert([
             'name' =>'chocolate',
-            'price' => 600,
+            'price' => 1000,
             'stock' => 1,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
