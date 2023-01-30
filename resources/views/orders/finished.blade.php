@@ -22,21 +22,21 @@
                         @foreach ($datas['info'] as $data)
                         <tr>
                             <td class="p-4">{{ $data['product'] ->name }}</td>
-                            <td class="p-4">{{ $data['product']->price }}</td>
+                            <td class="p-4">￥{{ $data['product']->price }}</td>
                             <td class="p-4">{{ $data['amount']}}</td>
                         </tr>
                     @endforeach
                     </table>
                 </div>
-                <div class="flex justify-center m-40">
+                <div class="flex justify-center m-30">
                     <table class="table-fixed text-center bg-white">
                         <tr>
                             <th scope="col" class="bg-yellow-50 p-4">小計</th>
-                            <td class="p-4">{{ $datas['total_price'] }}</td>
+                            <td class="p-4">￥{{ $datas['total_price'] }}</td>
                         </tr>
                         <tr>
                             <th scope="col" class="bg-yellow-50 p-4">小計(TAX)</th>
-                            <td class="p-4">{{ $datas['total_price_tax'] }}</td>
+                            <td class="p-4">￥{{ $datas['total_price_tax'] }}</td>
                         </tr>
                         <tr>
                             <th scope="col" class="bg-yellow-50 p-4">総量</th>
