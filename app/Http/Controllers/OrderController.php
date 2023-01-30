@@ -242,7 +242,7 @@ class OrderController extends Controller
                 ->join('products', 'products.id', '=', 'order_details.product_id')
                 ->where('order_id', $more)
                 ->get();
-        dd($details);
+        //dd($details);
         //dd($more_details);
         //$test=new Order_detail();
         //$details = $more_details->order_details->getProduct();

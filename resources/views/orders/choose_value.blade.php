@@ -14,29 +14,43 @@
             <x-slot name="header">Choose Value</x-slot>
             <form action="/orders/count" method="POST">
                 @csrf
-                <table>
-                    <tr>
-                        <th>商品</th> <th>単価</th> <th>在庫</th> <th>個数</th>
-                    </tr>
+                <div class="flex justify-center m-20">
+                    <table class="table-auto text-left">
+                        <tr class="bg-gray-500 text-white">
+                            <th scope="col" class="p-4">商品</th>
+                            <th scope="col" class="p-4">単価</th> 
+                            <th scope="col" class="p-4">在庫</th> 
+                            <th scope="col" class="p-4">個数</th>
+                        </tr>
                     
                     @foreach ($mercs as $merc)
                     <input type="hidden" name="merc_value[{{ $merc->name }}][product_id]" value={{ $merc->id }}>
-                    <tr>
+                    <tr class="p-4">
                         <!-- <h2>value:{{$merc}}</h2> -->
-                        <td>{{ $merc->name }}</td> <td>{{ $merc->price }}</td> <td>{{ $merc->stock }} </td>
-                        <td>
+                        <td class="p-4">{{ $merc->name }}</td>
+                        <td class="p-4">{{ $merc->price }}</td> 
+                        <td class="p-4">{{ $merc->stock }} </td>
+                        <td class="p-4">
                             <input type="number" name="merc_value[{{ $merc->name }}][amount]" placeholder="1">
                         </td>
                     </tr>
                     @endforeach
                     
-                </table>
-                <input type="submit" value="subtotal">
+                    </table>
+                </div>    
+                
+                
+            
+            <div class="flex justify-center m-20">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Subtotal</button>
+                </div>
+                <!-- <input type="button" onclick="location.href='/orders/choose_value'" value="choose">  -->
             </form>
             <div class="footer">
-                <!--<input type="button" onclick="location.href='/orders/subtotal'" value="subtotal">-->
-                <a href="/orders/choose">back</a>
-                
+                <div class="flex justify-center m-20">
+                    <a href="/orders/choose" class="my-2 px-4 py-2 border-2 border-blue-500 hover:opacity-75 rounded-full font-bold">back</a>
+                    
+                </div>
                 
                 
             </div>

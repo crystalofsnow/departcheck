@@ -12,15 +12,24 @@
     <body class>
         <x-app-layout>
             <x-slot name="header">Sale Datas</x-slot>
-             <table>
+            <div class="flex justify-center m-20">
+                    <table class="table-auto text-left bg-white">
+                        <tr class="bg-gray-500 text-white">
                     
-                    <th> ID </th><th>Total Amount</th> <th>Total Price</th> <th>日時</th> <th>詳細</th>
+                            <th scope="col" class="p-4"> ID </th>
+                            <th scope="col" class="p-4">Total Amount</th> 
+                            <th scope="col" class="p-4">Total Price</th> 
+                            <th scope="col" class="p-4">日時</th> 
+                            <th scope="col" class="p-4">詳細</th>
                     
                     @foreach($datas as $data)
                     <tr>
                        
-                       <td>{{ $data->id }}</td> <td>{{ $data->total_amount }}</td> <td>{{ $data->total_price }} </td> <td>{{ $data->created_at }} </td>
-                       <td><form action="/orders/more_post" method="POST">
+                       <td class="p-4">{{ $data->id }}</td>
+                       <td class="p-4">{{ $data->total_amount }}</td> 
+                       <td class="p-4">￥{{ $data->total_price }} </td> 
+                       <td>{{ $data->created_at }} </td>
+                       <td class="p-4 text-red-700"><form action="/orders/more_post" method="POST">
                         @csrf
                        <input type="hidden" name="id" value={{ $data->id }}>
                        <input type="submit" value="more">
@@ -28,6 +37,7 @@
                        </td>
                     @endforeach
                 </table>
+            </div>
         </x-app-layout>
     </body>
 </html>
