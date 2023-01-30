@@ -17,12 +17,48 @@ class ProductSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'name' =>'shortcake',
+            'name' =>'monbrancake',
             'price' => 600,
             'stock' => 1,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
-            'image_url' =>'https://res.cloudinary.com/dkl3o6b4g/image/upload/v1675006849/departcheck/short-cake_uqwpbf.jpg',
+            'image_url' =>'https://res.cloudinary.com/dkl3o6b4g/image/upload/v1675006849/departcheck/monburancake_ggqdax.jpg',
+            ]);
+            
+        DB::table('products')->insert([
+            'name' =>'cheezecake',
+            'price' => 600,
+            'stock' => 1,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+            'image_url' =>'https://res.cloudinary.com/dkl3o6b4g/image/upload/v1675006850/departcheck/cheeze-cake_dypfni.jpg',
+            ]);
+        
+        DB::table('products')->insert([
+            'name' =>'muffin',
+            'price' => 600,
+            'stock' => 1,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+            'image_url' =>'https://res.cloudinary.com/dkl3o6b4g/image/upload/v1675006850/departcheck/muffin_l5xdwb.jpg',
+            ]);
+            
+        DB::table('products')->insert([
+            'name' =>'macaron',
+            'price' => 600,
+            'stock' => 1,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+            'image_url' =>'https://res.cloudinary.com/dkl3o6b4g/image/upload/v1675006849/departcheck/macaron_tezvcy.jpg',
+            ]);
+            
+        DB::table('products')->insert([
+            'name' =>'chocolate',
+            'price' => 600,
+            'stock' => 1,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+            'image_url' =>'https://res.cloudinary.com/dkl3o6b4g/image/upload/v1675006850/departcheck/chocolate_ntkdnf.jpg',
             ]);
 
     }
